@@ -34,20 +34,18 @@ public class BunnyController : MonoBehaviour {
 		}
 
 		if (bunnyHurtTime == -1) {
-			if (((Input.GetButtonUp ("Jump")) || (Input.GetButtonUp ("Fire1")))  && jumpsLeft > 0) {
+			if ((Input.GetButtonUp ("Jump") && jumpsLeft > 0) || (Input.GetButtonUp ("Fire1")  && jumpsLeft > 0)) {
 
 				if (rb.velocity.y < 0) {
 					rb.velocity = Vector2.zero;
 				}
 				if (jumpsLeft == 1) {
-					Debug.Log ("test");
 					rb.AddForce (transform.up * bunnyJumpForce * 0.75f);
 
 				} else {
 					
 					rb.AddForce (transform.up * bunnyJumpForce);
 				}
-				Debug.Log (jumpsLeft);
 				jumpsLeft--;
 
 				jumpSfx.Play ();
